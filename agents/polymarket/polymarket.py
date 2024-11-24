@@ -6,6 +6,7 @@ import pdb
 import time
 import ast
 import requests
+import json
 
 from dotenv import load_dotenv
 
@@ -368,19 +369,20 @@ def test():
     client = ClobClient(host, key=key, chain_id=chain_id)
     client.set_api_creds(client.create_or_derive_api_creds())
 
-    creds = ApiCreds(
-        api_key=os.getenv("CLOB_API_KEY"),
-        api_secret=os.getenv("CLOB_SECRET"),
-        api_passphrase=os.getenv("CLOB_PASS_PHRASE"),
-    )
-    chain_id = AMOY
-    client = ClobClient(host, key=key, chain_id=chain_id, creds=creds)
+    # creds = ApiCreds(
+    #     api_key=os.getenv("CLOB_API_KEY"),
+    #     api_secret=os.getenv("CLOB_SECRET"),
+    #     api_passphrase=os.getenv("CLOB_PASS_PHRASE"),
+    # )
+    # chain_id = AMOY
+    # client = ClobClient(host, key=key, chain_id=chain_id, creds=creds)
+    
 
     print(client.get_markets())
-    print(client.get_simplified_markets())
-    print(client.get_sampling_markets())
-    print(client.get_sampling_simplified_markets())
-    print(client.get_market("condition_id"))
+    # print(client.get_simplified_markets())
+    # print(client.get_sampling_markets())
+    # print(client.get_sampling_simplified_markets())
+    # print(client.get_market("condition_id"))
 
     print("Done!")
 
@@ -425,16 +427,17 @@ def gamma():
 
 def main():
     # auth()
-    # test()
+    test()
     # gamma()
-    print(Polymarket().get_all_events())
+    # print(Polymarket().get_all_events())
 
 
 if __name__ == "__main__":
     load_dotenv()
-
+    main()
     p = Polymarket()
 
+    # breakpoint()
     # k = p.get_api_key()
     # m = p.get_sampling_simplified_markets()
 
@@ -443,7 +446,6 @@ if __name__ == "__main__":
 
     # t = m[0]['token_id']
     # o = p.get_orderbook(t)
-    # pdb.set_trace()
 
     """
     
